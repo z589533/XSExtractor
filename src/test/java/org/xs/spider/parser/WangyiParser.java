@@ -17,7 +17,6 @@ public class WangyiParser extends BasicParser {
 
     public WangyiParser(){
         //将自己注册到ParserLocator中
-        System.out.println("wangyi");
         ParserLocator.getInstance().register("news.163.com",this);
     }
 

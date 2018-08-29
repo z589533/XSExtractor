@@ -1,0 +1,36 @@
+# maven ignore
+target/
+*.jar
+*.war
+*.zip
+*.tar
+*.tar.gz
+
+# eclipse ignore
+.settings/
+.project
+.classpath
+
+# idea ignore
+.idea/libraries/*
+.idea/*
+*.ipr
+*.iml
+*/*.iml
+*.iws
+*/idea/libraries/*
+*/idea/
+
+# temp ignore
+logs/
+*.doc
+*.log
+*.cache
+*.diff
+*.patch
+*.tmp
+
+# system ignore
+.DS_Store
+Thumbs.db
+.idea/

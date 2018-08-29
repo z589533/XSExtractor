@@ -9,6 +9,7 @@ import org.xs.spider.Fetcher.BasicImgFetcher;
 import org.xs.spider.Fetcher.ImgFetcher;
 import org.xs.spider.rating.Rating;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -32,7 +33,7 @@ public class BasicParser implements Parser {
         document.getElementsByTag("input").remove();
         document.getElementsByTag("object").remove();
         document.getElementsByTag("textarea").remove();
-        document.getElementsByTag("a").attr("href", "javascript:void(0)").remove();
+//        document.getElementsByTag("a").attr("href", "javascript:void(0)").remove();
         document.getElementsByAttributeValue("display", "none").remove();
         document.getElementsByAttributeValueContaining("style", "display:none").remove();
         document.getElementsByAttributeValueContaining("style", "overflow: hidden").remove();
@@ -97,6 +98,28 @@ public class BasicParser implements Parser {
             String localImgUrl = fetcher.fetch(url);
             element.attr("src", localImgUrl);
         }
+    }
+
+    /**
+     * 下载图片（由于需要相应的Fetcher，目前尚未实现）
+     *
+     * @param contentElement
+     */
+    @Override
+    public List<String> downloadImgs(Element contentElement) {
+        Elements imgElements = contentElement.getElementsByTag("img");
+        if (imgElements == null) {
+            return null;
+        }
+        List<String> images=new ArrayList<>();
+//        ImgFetcher fetcher = new BasicImgFetcher();
+        for (Element element : imgElements) {
+            String url = element.attr("src");
+            images.add(url);
+//            String localImgUrl = fetcher.fetch(url);
+//            element.attr("src", localImgUrl);
+        }
+        return images;
     }
 
     /**

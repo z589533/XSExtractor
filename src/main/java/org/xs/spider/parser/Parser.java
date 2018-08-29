@@ -37,6 +37,9 @@ public interface Parser {
      */
     public void downloadImg(Element contentElement);
 
+
+    List<String> downloadImgs(Element contentElement);
+
     /**
      * 按照正则移除正文中多余的部分
      * @return

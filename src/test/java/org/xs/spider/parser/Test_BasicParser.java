@@ -1,5 +1,6 @@
 package org.xs.spider.parser;
 
+import com.alibaba.fastjson.JSON;
 import org.apache.commons.io.FileUtils;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -10,6 +11,7 @@ import org.xs.spider.rating.Rating;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 
 /**
  * Created by Administrator on 15-5-29.
@@ -23,15 +25,17 @@ public class Test_BasicParser {
         new WangyiParser();
         //http://www.edai.com/news/xuetang/138124.html  抓取了多余的上一页下一页标签
 
-        String url = "http://ent.ifeng.com/a/20150709/42449855_0.shtml";
+        String url = "https://www.thairath.co.th/content/1363354";
         try {
             Document document = Jsoup.connect(url).get();
             Parser parser= ParserLocator.getInstance().getParser(url);
             //  BasicParser parser = new BasicParser();
             String content = parser.getContent(document);
             String text=parser.getContentText(document);
+            List<String> stringList=parser.downloadImgs(document);
             System.out.println(text);
-            FileUtils.write(new File("d:/textContent.html"), content, "gbk");
+            System.out.println("image="+ JSON.toJSONString(stringList));
+            FileUtils.write(new File("d:/textContent.html"), content, "utf-8");
             System.out.println(content);
         } catch (IOException e) {
             e.printStackTrace();
