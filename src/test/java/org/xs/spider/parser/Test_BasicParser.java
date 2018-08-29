@@ -24,17 +24,17 @@ public class Test_BasicParser {
         //http://www.cbrhq.gov.cn/Item/13014.aspx
         new WangyiParser();
         //http://www.edai.com/news/xuetang/138124.html  抓取了多余的上一页下一页标签
-
-        String url = "https://www.thairath.co.th/content/1363354";
+//https://www.posttoday.com//media/content/2018/08/29/396AD146E65440838AF640E015CE9816.jpg
+        String url = "https://www.posttoday.com/finance/stock/562491";
         try {
             Document document = Jsoup.connect(url).get();
-            Parser parser= ParserLocator.getInstance().getParser(url);
+            Parser parser = ParserLocator.getInstance().getParser(url);
             //  BasicParser parser = new BasicParser();
             String content = parser.getContent(document);
-            String text=parser.getContentText(document);
-            List<String> stringList=parser.downloadImgs(document);
+            String text = parser.getContentText(document);
+            List<String> stringList = parser.downloadImgs(document);
             System.out.println(text);
-            System.out.println("image="+ JSON.toJSONString(stringList));
+            System.out.println("image=" + JSON.toJSONString(stringList));
             FileUtils.write(new File("d:/textContent.html"), content, "utf-8");
             System.out.println(content);
         } catch (IOException e) {
@@ -43,7 +43,7 @@ public class Test_BasicParser {
     }
 
     @Test
-    public void test3(){
+    public void test3() {
         String url = "http://www.edai.com/news/xuetang/138124.html";
         try {
             Document document = Jsoup.connect(url).get();
@@ -55,7 +55,6 @@ public class Test_BasicParser {
             e.printStackTrace();
         }
     }
-
 
 
     @Test
@@ -70,7 +69,7 @@ public class Test_BasicParser {
                 "                          </tr>\n" +
                 "                        </tbody></table>");
 
-       // Rating.doTextRate(doc.body());
+        // Rating.doTextRate(doc.body());
         //doScoreToElement(doc.body());
         System.out.println(doc.body().toString());
     }

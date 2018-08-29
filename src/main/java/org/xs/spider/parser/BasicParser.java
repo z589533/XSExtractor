@@ -33,7 +33,7 @@ public class BasicParser implements Parser {
         document.getElementsByTag("input").remove();
         document.getElementsByTag("object").remove();
         document.getElementsByTag("textarea").remove();
-//        document.getElementsByTag("a").attr("href", "javascript:void(0)").remove();
+        document.getElementsByTag("a").attr("href", "javascript:void(0)").remove();
         document.getElementsByAttributeValue("display", "none").remove();
         document.getElementsByAttributeValueContaining("style", "display:none").remove();
         document.getElementsByAttributeValueContaining("style", "overflow: hidden").remove();
